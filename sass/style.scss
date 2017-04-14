@@ -84,9 +84,13 @@ body {
     width: 100%;
 }
 
-b,
-strong {
-    font-weight: $bold-font-weight;
+.icons {
+    margin-right: .3em;
+    vertical-align: middle;
+
+    svg {
+        height: 1em;
+    }
 }
 
 /* -----------------------------------------------------------------------------
@@ -99,6 +103,11 @@ h3,
 h4,
 h5,
 h6 {
+    font-weight: $bold-font-weight;
+}
+
+b,
+strong {
     font-weight: $bold-font-weight;
 }
 
@@ -436,9 +445,10 @@ body > main {
 
     span {
         margin-right: 1rem;
-        * {
-            opacity: .7;
-        }
+        opacity: .7;
+    }
+    svg {
+        fill: $color-secondary;
     }
     a {
         color: $color-secondary;
