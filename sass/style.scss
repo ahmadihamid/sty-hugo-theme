@@ -85,7 +85,6 @@ body {
 }
 
 .icons {
-    margin-right: .3em;
     vertical-align: middle;
 
     svg {
@@ -201,7 +200,7 @@ body > header {
             content   : "";
             margin-top: -3px;
             position  : absolute;
-            right     : 13px;
+            right     : 16px;
             top       : 50%;
         }
         &.down:after,
@@ -287,13 +286,15 @@ body > header {
         }
     }
 
-    .close .navigation-link:after {
-        content    : '×';
-        font-weight: $bold-font-weight;
-        line-height: 3rem;
-        margin-top : -3px;
-        position   : absolute;
-        right      : 13px;
+    .close {
+        .icons {
+            float: right;
+            padding-top: .2rem;
+        }
+        svg {
+            fill: $color-initial;
+            width: .8em;
+        }
     }
 
     & li:first-child a:hover {
@@ -446,6 +447,9 @@ body > main {
     span {
         margin-right: 1rem;
         opacity: .7;
+    }
+    .icons {
+        margin-right: .3em;
     }
     svg {
         fill: $color-secondary;

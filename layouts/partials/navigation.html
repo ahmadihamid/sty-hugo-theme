@@ -15,7 +15,9 @@
     </li>
   {{ end }}
   <li class='navigation-item close'>
-    <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span></a>
+    <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span>
+      {{ partial "svg/remsign.html" }}
+    </a>
   </li>
 </ul>
 {{ range .Site.Menus.nav }}
@@ -34,7 +36,9 @@
       </li>
     {{ end }}
       <li class='navigation-item close'>
-        <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span></a>
+        <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span>
+          {{ partial "svg/remsign.html" }}
+        </a>
       </li>
     </ul>
   {{end}}
