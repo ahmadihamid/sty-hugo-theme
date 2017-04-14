@@ -6,7 +6,8 @@ var exec       = require('child_process').exec;
 var rename     = require('gulp-rename');
 var sass       = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
-var argv       = require('yargs').argv
+var argv       = require('yargs').argv;
+var uglify     = require('gulp-uglify');
 
 gulp.task('copy:resetcss', function (){
     return gulp.src(['node_modules/normalize.css/normalize.css'])
@@ -39,7 +40,6 @@ gulp.task('sass', function(){
 gulp.task('build:css', ['copy:resetcss', 'sass'] , function (cb) {
     var src = gulp.src([
         'static/css/normalize.min.css',
-        'static/css/font-awesome.css',
         'static/css/style.css'
     ]);
 
@@ -54,6 +54,23 @@ gulp.task('build:css', ['copy:resetcss', 'sass'] , function (cb) {
     }
 
     return src.pipe(gulp.dest('static/css'));
+});
+
+gulp.task('build:js', function () {
+    function createErrorHandler(name) {
+        return function (err) {
+            console.error('Error from ' + name + ' in build task', err.toString());
+        };
+    }
+
+    var src = gulp.src([
+        'static/js/_*.js'
+    ]);
+
+    src = src.pipe(uglify()).on('error', createErrorHandler('uglify'));
+    src = src.pipe(concat('main.js'))
+
+    return src.pipe(gulp.dest('static/js'));
 });
 
 gulp.task('clean:css', function () {
