@@ -1,0 +1,28 @@
+<meta name="twitter:card" content="summary" />
+
+{{ if .IsHome }}
+  <meta name="twitter:title" content="{{ .Site.Title }}" />
+{{ else if eq .Kind "taxonomy" }}
+  <meta name="twitter:title" content="{{ $.Scratch.Get "termTitle" | default .Title }} &middot; {{ .Site.Title }}" />
+{{ else }}
+  <meta name="twitter:title" content="{{ .Title }} &middot; {{ .Site.Title }}" />
+{{ end }}
+
+{{ if (isset .Params "description") }}
+  <meta name="twitter:description" content="{{ .Params.description }}" />
+{{ else }}
+  <meta name="twitter:description" content="
+    {{ substr (plainify (.Summary | default .Site.Params.description)) 0 200 }}
+    {{ if .IsPage }}...{{ end }}">
+{{ end }}
+
+{{ if (isset .Params "image") }}
+  <meta name="twitter:image" content='{{ .Params.image | absURL }}' />
+{{ else }}
+  <meta name="twitter:image" content='{{ "img/thumb-small.jpg" | absURL }}' />
+{{ end }}
+
+{{ $author := (.Params.author.twitter | default .Site.Params.author.twitter) }}
+{{ if ne $author nil }}
+  <meta property="twitter:creator" content='@{{ $author }}' />
+{{ end }}

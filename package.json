@@ -1,0 +1,30 @@
+{
+  "name": "sty",
+  "version": "1.0.0",
+  "description": "sty jekyll themes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jekyll",
+    "themes"
+  ],
+  "author": "nsetyo",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.3.1",
+    "milligram-scss": "^1.2.0",
+    "yargs": "^7.0.2"
+  },
+  "dependencies": {
+    "normalize.css": "^5.0.0"
+  }
+}

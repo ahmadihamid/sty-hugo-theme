@@ -1,0 +1,41 @@
+<a href="#main-menu" class="navigation-toggle button arrow down" data-menupop>
+  <span class="caption">Menu</span>
+</a>
+<ul id="main-menu" class='navigation-list menu'>
+  {{ $currentPage := . }}
+  {{ range .Site.Menus.nav }}
+    <li class='navigation-item {{if $currentPage.IsMenuCurrent "nav" . }} active{{end}}'>
+    {{ if .HasChildren }}
+      <a class="navigation-link arrow down" href="#{{ .Identifier }}-menu" data-menupop>
+          {{ .Pre }} <span>{{ .Name }}</span> &nbsp;
+      </a>
+    {{ else }}
+      <a class="navigation-link" href="{{ .URL }}">{{ .Pre }} <span>{{ .Name }}</span></a>
+    {{end}}
+    </li>
+  {{ end }}
+  <li class='navigation-item close'>
+    <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span></a>
+  </li>
+</ul>
+{{ range .Site.Menus.nav }}
+  {{ if .HasChildren }}
+    <ul id="{{ .Identifier }}-menu" class="navigation-list menu">
+      <li class='navigation-item'>
+        <a class="navigation-link arrow left" href="#main-menu" data-menupop>
+            {{ .Pre }} <span>Kembali</span> &nbsp;
+        </a>
+      </li>
+    {{ range .Children }}
+      <li class='navigation-item {{if $currentPage.IsMenuCurrent "nav" . }} active{{end}}'>
+        <a class="navigation-link" href='{{ .URL | relLangURL }}' title="{{ .Name }}">
+          {{ .Pre }} <span>{{ .Name }}</span>
+        </a>
+      </li>
+    {{ end }}
+      <li class='navigation-item close'>
+        <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span></a>
+      </li>
+    </ul>
+  {{end}}
+{{ end }}

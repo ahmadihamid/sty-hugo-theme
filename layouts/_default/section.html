@@ -1,0 +1,21 @@
+{{ define "main" }}
+<header class="archive-title">
+  <h5>Arsip: {{ .Title }}</h5>
+</header>
+<ul class="archive">{{ range .Data.Pages.GroupByDate "2006" }}
+  <li>
+    <h4>{{ .Key }}</h4>
+    <ul class="posts-list">
+      {{ range .Pages }}
+        <li class="post">
+          <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02/01/2006" }}</time>
+          <span class="separator"> - </span>
+          <div class="post-permalink">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  </li>{{ end }}
+  </ul>
+{{ end }}

@@ -1,0 +1,14 @@
+<div class="post-comments">
+  <div id="disqus_thread" data-disqusId="{{ .Params.disqus_identifier | default .File.BaseFileName }}"></div>
+  <script>
+    var disqus_config = function () {
+      {{ if (isset .Params "canonicalurl") }}
+        this.page.url = '{{ .Params.canonicalurl }}';
+      {{ else if (isset .Site.Params "canonicalurl") }}
+        this.page.url = '{{ printf "%s%s" .Site.Params.canonicalurl .URL }}';
+      {{ end}}
+      this.page.identifier = '{{ .Params.disqus_identifier | default (md5 .File.BaseFileName) }}';
+    }; (function() { if (window.location.hostname == "localhost") return; /* DON'T EDIT BELOW THIS LINE */ var d = document, s = d.createElement('script'); s.src = "https://{{ .Site.DisqusShortname }}.disqus.com/embed.js"; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s); })();
+  </script>
+  <noscript> Aktifkan javascript untuk memberi komentar </noscript>
+</div>

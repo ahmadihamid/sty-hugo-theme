@@ -1,0 +1,4 @@
+<script>
+// var pars = document.getElementsByClassName('close'); while(pars[0]) { pars[0].parentNode.removeChild(pars[0]); }
+const $a=document.querySelectorAll("[data-menupop]"),$b=document.querySelectorAll(".menu");var i;for(i=0;i<$a.length;i++)$a[i].addEventListener("click",op);document.addEventListener("click",cp);function cp(event){for(i=0;i<$b.length;i++)$b[i].classList.remove("open")}function op(event){event.preventDefault();if(this.getAttribute("href")=="#"){cp();event.stopImmediatePropagation();return}if(document.querySelector(this.getAttribute("href")).classList.contains("open")){document.querySelector(this.getAttribute("href")).classList.remove("open")}else{cp();document.querySelector(this.getAttribute("href")).classList.add("open")}event.stopImmediatePropagation()}
+</script>

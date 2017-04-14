@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <header class="archive-title">
+    <h5>
+      <a href="{{ .Data.Plural | relURL }}">{{ humanize .Data.Singular }}</a>:
+      {{ $.Scratch.Get "termTitle" | default .Title }}
+    </h5>
+  </header>
+  {{ range .Paginator.Pages }}
+    {{ .Render "summary" }}
+  {{ end }}
+  {{ partial "pagination.html" . }}
+{{ end }}

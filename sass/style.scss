@@ -1,0 +1,553 @@
+/* -----------------------------------------------------------------------------
+ *  Author  : Setyo <nsetyo.snugroho@gmail.com>
+ *  Website : https://nsetyo.id
+ *  ToC:
+ *    - Variable
+ *    - Dependency
+ *    - General
+ *    - Typography
+ *    - Links and Buttons
+ *    - Code
+ *    - Header
+ *    - Navigation
+ *    - Content
+ *    - Pagination
+ *    - Footer
+ * -----------------------------------------------------------------------------
+ */
+
+/* -----------------------------------------------------------------------------
+ *  Variable
+ * -----------------------------------------------------------------------------
+ */
+
+$color-initial    : #ffffff !default;
+$color-primary    : #1abc9c !default;
+$color-secondary  : #616161 !default;
+$color-quaternary : #b1b1b1 !default;
+$color-quinary    : #e1e1e1 !default;
+
+$base-font-family : 'Roboto', 'Helvetica Neue', sans-serif;
+$monospace-font   : 'Roboto Mono', monospace;
+
+$base-font-size:  1.6em;
+$base-line-height:  1.6;
+$base-font-weight:  300;
+$bold-font-weight:  400;
+$container-width: 72rem;
+
+/* -----------------------------------------------------------------------------
+ *  Dependency
+ *    - Google fonts <https://google-webfonts-helper.herokuapp.com/>
+ *    - milligram <http://milligram.github.io/>
+ * -----------------------------------------------------------------------------
+ */
+
+@import 'font-roboto-300';
+@import 'font-roboto-400';
+@import 'font-robotomono-400';
+@import 'syntaxhighlight';
+@import '../node_modules/milligram-scss/dist/_Blockquote.scss';
+@import '../node_modules/milligram-scss/dist/_Image.scss';
+@import '../node_modules/milligram-scss/dist/_Typography.scss';
+@import '../node_modules/milligram-scss/dist/_Utility.scss';
+
+/* -----------------------------------------------------------------------------
+ *  General
+ *  The base font-size is set at 62.5% for having the convenience
+ *  of sizing rems in a way that is similar to using px: 1.6rem = 16px
+ * -----------------------------------------------------------------------------
+ */
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body {
+    color         : $color-secondary;
+    font-family   : $base-font-family;
+    font-size     : $base-font-size; // Currently ems cause chrome bug misinterpreting rems on body element
+    font-weight   : $base-font-weight;
+    line-height   : $base-line-height;
+    letter-spacing: .01em;
+}
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+.container {
+    margin   : 0 auto;
+    max-width: $container-width;
+    padding  : 0 2.0rem;
+    position : relative;
+    width: 100%;
+}
+
+b,
+strong {
+    font-weight: $bold-font-weight;
+}
+
+/* -----------------------------------------------------------------------------
+ *  Typography
+ * -----------------------------------------------------------------------------
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $bold-font-weight;
+}
+
+/* -----------------------------------------------------------------------------
+ *  Links and Buttons
+ * -----------------------------------------------------------------------------
+ */
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+    &[rel="footnote"] {
+        margin-left: 2px;
+
+        &:before { content: "["; }
+        &:after  { content: "]"; }
+    }
+
+    &:focus,
+    &:hover {
+        color: $color-secondary;
+        outline: 0;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ *  Header
+ * -----------------------------------------------------------------------------
+ */
+body > header {
+    background: #fdfdfd;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, .1);
+    max-width : 100%;
+    padding   : 10px 0;
+    position  : fixed;
+    top       : 0;
+    width     : 100%;
+    z-index   : 999;
+}
+
+.header-title {
+    display: inline-block;
+    line-height: 3.2rem;
+    position: relative;
+    text-decoration : none;
+
+    h4,
+    h5 {
+        font-family: $monospace-font;
+        font-weight: 400;
+        margin  : 0;
+        padding : 0;
+    }
+
+    a {
+        color: $color-secondary;
+
+        &:focus,
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    .blink {
+      animation: blinker 1s linear infinite;
+    }
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+/* -----------------------------------------------------------------------------
+ *  Navigation
+ * -----------------------------------------------------------------------------
+ */
+
+.navigation {
+    height    : 3.2rem;
+    font-size : 1.4rem;
+    position: relative;
+
+    .container {
+        padding-bottom : 0;
+        padding-top    : 0;
+    }
+
+    .arrow {
+        &:after {
+            border    : 4px solid transparent;
+            content   : "";
+            margin-top: -3px;
+            position  : absolute;
+            right     : 13px;
+            top       : 50%;
+        }
+        &.down:after,
+        &.down:hover:after,
+        &.down:focus:after {
+            border-top-color: $color-initial;
+        }
+        &.left:after,
+        &.left:hover:after,
+        &.left:focus:after {
+            border-left-color: $color-initial;
+        }
+    }
+}
+
+.navigation-toggle {
+    border        : .1rem solid $color-primary;
+    display       : block;
+    font-size     : 1.4rem;
+    height        : 3.0rem;
+    letter-spacing: .1rem;
+    line-height   : 2.0rem;
+    margin        : 0 0 0 auto;
+    padding       : .4rem 1.3rem;
+    text-align    : left;
+    text-transform: none;
+    white-space   : nowrap;
+    width         : 9rem;
+    transition    : width .8s ease-out;
+
+    &:focus,
+    &:hover {
+        color: $color-initial;
+    }
+    &:hover {
+        background: $color-primary;
+    }
+    &:focus {
+        background: darken($color-primary, 3%);
+    }
+
+    &.arrow {
+        &.down:after {
+            border-top-color: $color-primary;
+        }
+        &.left:after {
+            border-left-color: $color-primary;
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    .navigation-toggle {
+        width: 18rem;
+    }
+}
+
+.navigation-toggle,
+.navigation-list {
+    border-radius: .4rem;
+    font-weight: $bold-font-weight;
+}
+
+.navigation-list {
+    background: $color-primary;
+    display   : none;
+    list-style: none;
+    margin    : 7px 0 0 0;
+    padding   : 0;
+    position  : absolute;
+    right     : 0;
+    width     : 18rem;
+
+    .navigation-link  {
+        color: $color-initial;
+        display: block;
+        padding: 6px 14px;
+        text-decoration : none;
+
+        &:hover {
+            color: $color-initial;
+            background: darken($color-primary, 3%);
+        }
+    }
+
+    .close .navigation-link:after {
+        content    : '×';
+        font-weight: $bold-font-weight;
+        line-height: 3rem;
+        margin-top : -3px;
+        position   : absolute;
+        right      : 13px;
+    }
+
+    & li:first-child a:hover {
+        border-top-left-radius:  .4rem;
+        border-top-right-radius: .4rem;
+    }
+    & li:last-child a:hover {
+        border-bottom-left-radius:  .4rem;
+        border-bottom-right-radius: .4rem;
+    }
+    li:not(:last-child) {
+        border-bottom: 1px solid #18b193;
+    }
+    .navigation-item {
+        margin-bottom: 0;
+        position: relative;
+    }
+}
+
+.navigation-list {
+    display: none;
+}
+.navigation-list.open,
+.navigation-list:target {
+    display: block;
+}
+
+/* -----------------------------------------------------------------------------
+ *  Content
+ * -----------------------------------------------------------------------------
+ */
+
+body > main {
+    margin-top: 8rem;
+}
+
+.archive-title h5 {
+    font-weight   : 300;
+    margin-bottom : 2rem;
+    opacity       : .8;
+    padding-bottom: 1rem;
+    text-align    : center;
+}
+
+.section {
+    @media (max-width: 480px) {
+      .posts-list {
+          padding-left: 2rem;
+      }
+    }
+
+    .posts-list,
+    .archive {
+        list-style: none;
+        margin-bottom: 4rem;
+    }
+
+    .archive {
+        margin : 0;
+        padding: 0;
+    }
+
+    .post {
+        margin: 0;
+
+        .separator {
+            float: left;
+            width: 1rem;
+            text-align: center;
+        }
+
+        time {
+            float : left;
+            width : 9rem;
+        }
+
+        .post-permalink {
+            padding-left: 10rem;
+        }
+    }
+}
+
+.post {
+    margin-bottom: 4rem;
+
+    .post-header {
+        border-bottom: 1px solid $color-quinary;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+
+        .post-title {
+            font-weight: $bold-font-weight;
+            margin-bottom: 1rem;
+        }
+    }
+    .post-body {
+        hyphens: auto;
+        margin-bottom: 2rem;
+        word-wrap: break-word;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 2.4rem 0 1.6rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .footnotes li {
+            &:before {
+                display   : block;
+                content   : " ";
+                margin-top: -60px;
+                height    : 60px;
+                visibility: hidden;
+            }
+        }
+    }
+    ul, ol {
+        list-style-position: outside;
+        padding-left: 4rem;
+        li {
+            padding: 0 0 .6rem .6rem;
+        }
+    }
+    hr {
+        border: 0;
+        height: 1px;
+        background: $color-quinary;
+    }
+
+    figure {
+        margin: 0 0 2em 0;
+    }
+
+    figcaption {
+        text-align: center;
+    }
+}
+.post-meta {
+    font-size: 1.4rem;
+
+    span {
+        margin-right: 1rem;
+        * {
+            opacity: .7;
+        }
+    }
+    a {
+        color: $color-secondary;
+
+        &:hover {
+            color: $color-primary;
+            opacity: 1;
+        }
+    }
+    .post-categories a:not(:last-child):after,
+    .post-tags a:not(:last-child):after {
+        content: ", ";
+    }
+}
+
+.post-comments {
+    margin-top:  2rem;
+    padding-top: 2rem;
+}
+
+.post-footer {
+    .read-more {
+        font-size     : 1.4rem;
+        letter-spacing: .1rem;
+        text-transform: uppercase;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ *  Pagination
+ * -----------------------------------------------------------------------------
+ */
+.pagination {
+    margin-top: 4rem;
+    text-align: center;
+
+    .active , [disabled] {
+        cursor: not-allowed;
+        opacity: .6;
+    }
+}
+.pagination-list {
+    display   : inline-block;
+    list-style: none;
+    padding   : 0;
+
+    li {
+        float           : left;
+        position        : relative;
+        background-color: transparent;
+        border-radius   : 0;
+        border          : .1rem solid $color-primary;
+        color           : $color-primary;
+        font-size       : 1.1rem;
+        font-weight     : 400;
+        height          : 3.8rem;
+        letter-spacing  : .1rem;
+        line-height     : 3.6rem;
+        margin-left     : -1px;
+        position        : relative;
+        text-align      : center;
+        text-transform  : uppercase;
+        white-space     : nowrap;
+    }
+
+    li:nth-child(2),
+    .next a,
+    .prev a {
+        padding: 0 2rem;
+    }
+
+    .next, .prev {
+        a {
+            display: block;
+            font-size : 2.4rem;
+            font-weight: $bold-font-weight;
+            height: 3.5rem;
+            line-height : 3.2rem;
+        }
+
+        a:hover {
+            color  : $color-initial;
+        }
+
+        &:hover {
+            background-color: $color-primary;
+            border : .1rem solid darken($color-primary, 5%);
+        }
+    }
+
+    .active a a:focus, a:hover,
+    .active span, span:focus, span:hover {
+        z-index: 3;
+    }
+}
+
+@media (max-width: 480px) {
+  .pagination-list li:nth-child(2) {
+      span:first-child {
+          display: none;
+      }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ *  Footer
+ * -----------------------------------------------------------------------------
+ */
+body > footer {
+    font-size : 1.4rem;
+    text-align: center;
+}

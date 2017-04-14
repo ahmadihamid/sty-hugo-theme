@@ -1,0 +1,44 @@
+{{ if .IsHome }}
+  <meta property="og:title" content="{{ .Site.Title }}" />
+{{ else if eq .Kind "taxonomy" }}
+  <meta property="og:title" content="{{ $.Scratch.Get "termTitle" | default .Title }} &middot; {{ .Site.Title }}" />
+{{ else }}
+  <meta property="og:title" content="{{ .Title }} &middot; {{ .Site.Title }}" />
+{{ end }}
+
+{{ if (isset .Params "canonicalurl") }}
+<meta property="og:url" content='{{ .Params.canonicalurl }}' />
+{{ else if (isset .Site.Params "canonicalurl") }}
+<meta property="og:url" content='{{ printf "%s%s" .Site.Params.canonicalurl .URL }}' />
+{{ else }}
+<meta property="og:url" content='{{ .URL | absURL }}' />
+{{ end}}
+
+{{ if (isset .Site.Params.theme "fbappid") }}
+<meta property="fb:app_id" content='{{ .Site.Params.theme.fbappid }}' />
+{{ end}}
+
+{{ if (isset .Params "description") }}
+  <meta property="og:description" content="{{ .Params.description }}">
+{{ else }}
+  <meta property="og:description" content="
+    {{ substr (plainify (.Summary | default .Site.Params.description)) 0 200 }}
+    {{ if .IsPage }}...{{ end }}">
+{{ end }}
+
+{{ if (isset .Params "image") }}
+  <meta property="og:image" content='{{ .Params.image | absURL }}' />
+{{ else }}
+  <meta property="og:image" content='{{ "img/thumb-small.jpg" | absURL }}' />
+{{ end }}
+
+{{ if eq .Section "post" }}
+  {{ $author := (.Params.author.facebook | default .Site.Params.author.facebook) }}
+  <meta property="og:type" content="article" />
+  {{ if ne $author nil }}
+  <meta property="article:author" content='https://facebook.com/{{ $author }}' />
+  {{ end }}
+  <meta property="article:published_time" content='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}' />
+{{ else }}
+  <meta property="og:type" content="website" />
+{{ end }}

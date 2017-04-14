@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <article class="post">
+    <header class="post-header">
+      <h2 class="post-title">{{ .Title }}</h2>
+      <div class="post-meta">
+        {{ partial "post-meta.html" . }}
+      </div>
+    </header>
+    <div class="post-body"> 
+      {{ .Content }} 
+    </div>
+    <footer class="post-footer"></footer>
+    {{ if and ( ne $.Site.DisqusShortname "") (.Params.comments | default true) }}
+      {{ partial "disqus-comments.html" . }}
+    {{ end }}
+  </article>
+{{ end }}

@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="p:domain_verify" content="9b906401073b496fbcf9dee052441082"/>
+
+{{ if (isset .Params "description") }}
+  {{ $desc := (.Params "description") }}
+  <meta name="description" content='{{ replaceRE "\n" "" $desc }}{{ if .IsPage }}...{{ end }}'>
+{{ else }}
+  {{ $desc := (substr (plainify (.Summary | default .Site.Params.description)) 0 200) }}
+  <meta name="description" content='{{ replaceRE "\n" "" $desc }}{{ if .IsPage }}...{{ end }}'>
+{{ end }}
+
+{{ if ne .Site.Params.theme.fbopengraph false }}
+    {{ partial "opengraph.html" . }}
+{{ end }}
+
+{{ if ne .Site.Params.theme.twittercard false }}
+    {{ partial "twittercard.html" . }}
+{{ end }}
+
+{{ if .IsNode }}
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .RSSLink }}" />
+{{ end }}
+
+{{ if (isset .Params "canonicalurl") }}
+<link rel="canonical"  href='{{ .Params.canonicalurl }}'>
+{{ else if (isset .Site.Params "canonicalurl") }}
+<link rel="canonical"  href='{{ printf "%s%s" .Site.Params.canonicalurl .URL }}'>
+{{ else }}
+<link rel="canonical"  href='{{ .URL | absURL }}'>
+{{ end}}
+<link rel="icon" type="image/png" sizes="24x24" href='{{ "img/favicon.png" | absURL }}'>
+<link rel="stylesheet" href='{{ "css/style.min.css" | relURL }}'>
+
+{{ if .IsHome }}
+  <title>{{ .Site.Title }}</title>
+{{ else if eq .Kind "taxonomy" }}
+  <title>{{ $.Scratch.Get "termTitle" | default .Title }} &middot; {{ .Site.Title }}</title>
+{{ else }}
+  <title>{{ .Title }} &middot; {{ .Site.Title }}</title>
+{{ end }}

@@ -1,0 +1,25 @@
+{{ $pag := $.Paginator }}
+
+<div class="pagination">
+  <ul class="pagination-list">
+    <!-- Link for previous page -->
+    {{ if $pag.HasPrev }}
+      <li class="prev">
+        <a href="{{ $pag.Prev.URL }}" title="Menuju halaman sebelumnya"> &lsaquo; </a>
+      </li>
+    {{ else }}
+      <li class="prev active"> <a disabled> &lsaquo; </a> </li>
+    {{ end }}
+      <li> <span>Halaman</span> <span>{{ $pag.PageNumber }} dari {{ $pag.TotalPages }}</span> </li>
+    <!-- Next page button -->
+    {{ if $pag.HasNext }}
+      <li class="next">
+        <a href="{{ $pag.Next.URL }}" title="Menuju halaman berikutnya"> &rsaquo; </a>
+      </li>
+    {{ else }}
+      <li class="next active">
+        <a disabled> &rsaquo; </a>
+      </li>
+    {{ end }}
+  </ul>
+</div>

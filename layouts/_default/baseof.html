@@ -1,0 +1,39 @@
+{{ if eq .Kind "taxonomy"}}
+  {{ $xterm     := (.Title | lower) }}
+  {{ $xtaxonomy := (.Data.Singular | lower) }}
+  {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+    {{ if eq ($taxonomyname | singularize | lower) $xtaxonomy }}
+      {{ range $term, $termdata := $taxonomy }}
+        {{ if eq ($term | lower) $xterm }}
+          {{ $.Scratch.Set "termTitle" $term}}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="{{ .Kind }}">
+  <header>
+    <div class="container">
+      <div class="header-title">
+        <h5><a href="/">{{ .Site.Params.navigationtitle | default .Site.Title | safeHTML }}</a></h5>
+      </div>
+      <nav class="navigation float-right"> {{ partial "navigation.html" . }} </nav>
+    </div>
+  </header>
+  <main class="wrapper">
+    <section class="container">
+      <!-- {{ printf "%#v" (ne .Site.Params.theme.fbopengraph false) }} -->
+      {{ block "main" . }}
+        <!-- The part of the page that begins to differ between templates -->
+      {{ end }}
+    </section>
+  </main>
+  <footer> {{ partial "footer.html" . }} </footer>
+  {{ partial "javascript.html" .}}
+</body>
+</html>

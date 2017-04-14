@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <header class="archive-title">
+    <h5>Arsip: {{ .Title }}</h5>
+  </header>
+  <ul class="taxonomy-list">
+    {{ $data := .Data }} {{ range $key, $value := .Data.Terms.Alphabetical }}
+    <li class="taxonomy-list-item">
+      <a class="taxonomy-list-link" href="{{ $value.Name | urlize }}">{{ $value.Name }}</a>&nbsp;
+      <span class="taxonomy-list-count">({{ $value.Count }})</span>
+    </li>
+    {{ end }}
+  </ul>
+  {{ partial "pagination.html" . }}
+{{ end }}

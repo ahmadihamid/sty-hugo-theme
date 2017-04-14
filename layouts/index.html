@@ -1,0 +1,7 @@
+{{ define "main" }}
+  {{ range where .Paginator.Pages "Type" "!=" "page" }}
+    {{ .Render "summary" }}
+  {{ end }}
+  {{ partial "pagination.html" . }}
+{{ end }}
+

@@ -1,0 +1,15 @@
+<span class="post-date"> 
+  <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "2 Jan 2006" }}</time>
+</span>
+<span class="post-categories">
+  <i class="fa fa-folder"></i>&nbsp;
+  {{ range .Params.categories }}
+    <a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+  {{ end }}
+</span>
+<span class="post-tags">
+  <i class="fa fa-tags"></i>&nbsp;
+  {{ range .Params.tags }}
+    <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+  {{ end }}
+</span>
