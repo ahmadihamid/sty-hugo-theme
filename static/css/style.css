@@ -403,7 +403,8 @@ html {
   font-size: 62.5%; }
 
 body {
-  color: #616161;
+  background: #fefefe;
+  color: #515151;
   font-family: "Roboto", "Helvetica Neue", sans-serif;
   font-size: 1.6em;
   font-weight: 300;
@@ -457,7 +458,7 @@ a {
     a[rel="footnote"]:after {
       content: "]"; }
   a:focus, a:hover {
-    color: #616161;
+    color: #515151;
     outline: 0; }
 
 /* -----------------------------------------------------------------------------
@@ -465,7 +466,7 @@ a {
  * -----------------------------------------------------------------------------
  */
 body > header {
-  background: #fdfdfd;
+  background: #fcfcfc;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   max-width: 100%;
   padding: 10px 0;
@@ -486,7 +487,7 @@ body > header {
     margin: 0;
     padding: 0; }
   .header-title a {
-    color: #616161; }
+    color: #515151; }
     .header-title a:focus, .header-title a:hover {
       color: #1abc9c; }
   .header-title .blink {
@@ -688,9 +689,9 @@ body > main {
   .post-meta .icons {
     margin-right: .3em; }
   .post-meta svg {
-    fill: #616161; }
+    fill: #515151; }
   .post-meta a {
-    color: #616161; }
+    color: #515151; }
     .post-meta a:hover {
       color: #1abc9c;
       opacity: 1; }
@@ -706,6 +707,12 @@ body > main {
   font-size: 1.4rem;
   letter-spacing: .1rem;
   text-transform: uppercase; }
+
+.post-footer .read-more svg {
+  fill: #1abc9c; }
+
+.post-footer .read-more:hover svg {
+  fill: #515151; }
 
 /* -----------------------------------------------------------------------------
  *  Pagination

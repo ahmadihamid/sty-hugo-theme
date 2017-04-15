@@ -11,7 +11,8 @@
   <footer class="post-footer">
     {{ if .Truncated }}
         <p><a class="read-more" href="{{ .Permalink }}" title="Lanjutkan membaca">
-          Baca selengkapnya &nbsp;<i class="fa fa-chevron-right"></i>
+          Baca selengkapnya &nbsp;
+          {{ partial "svg/chevr.html" }}
         </a></p>
     {{ end }}
   </footer>
