@@ -86,7 +86,7 @@ code {
   background: #f4f5f6;
   border-radius: .4rem;
   font-size: 90%;
-  margin: 0 .2rem;
+  margin: 0;
   padding: .2rem .5rem; }
 
 pre {
@@ -677,8 +677,13 @@ body > main {
     background: #e1e1e1; }
   .post figure {
     margin: 0 0 2em 0; }
+  .post figure img {
+    width: 100%; }
   .post figcaption {
     text-align: center; }
+  .post .inline-icon {
+    vertical-align: sub;
+    height: 1em; }
 
 .post-meta {
   font-size: 1.4rem; }

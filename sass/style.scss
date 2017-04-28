@@ -438,8 +438,17 @@ body > main {
         margin: 0 0 2em 0;
     }
 
+    figure img {
+        width: 100%;
+    }
+
     figcaption {
         text-align: center;
+    }
+
+    .inline-icon {
+        vertical-align: sub;
+        height: 1em;
     }
 }
 .post-meta {
