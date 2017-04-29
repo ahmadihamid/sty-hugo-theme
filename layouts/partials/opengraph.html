@@ -19,11 +19,9 @@
 {{ end}}
 
 {{ if (isset .Params "description") }}
-  <meta property="og:description" content="{{ .Params.description }}">
+  <meta property="og:description" content="{{ .Params.description -}}">
 {{ else }}
-  <meta property="og:description" content="
-    {{ substr (plainify (.Summary | default .Site.Params.description)) 0 200 }}
-    {{ if .IsPage }}...{{ end }}">
+  <meta property="og:description" content="{{ substr (plainify (.Summary | default .Site.Params.description)) 0 200 -}} {{ if .IsPage }}...{{ end }}">
 {{ end }}
 
 {{ if (isset .Params "image") }}

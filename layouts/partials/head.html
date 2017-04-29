@@ -5,10 +5,10 @@
 
 {{ if (isset .Params "description") }}
   {{ $desc := (.Params "description") }}
-  <meta name="description" content='{{ replaceRE "\n" "" $desc }}{{ if .IsPage }}...{{ end }}'>
+  <meta name="description" content='{{ $desc -}}{{ if .IsPage }}...{{ end }}'>
 {{ else }}
   {{ $desc := (substr (plainify (.Summary | default .Site.Params.description)) 0 200) }}
-  <meta name="description" content='{{ replaceRE "\n" "" $desc }}{{ if .IsPage }}...{{ end }}'>
+  <meta name="description" content='{{ $desc -}}{{ if .IsPage }}...{{ end }}'>
 {{ end }}
 
 {{ if ne .Site.Params.theme.fbopengraph false }}
