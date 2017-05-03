@@ -27,13 +27,16 @@
   </header>
   <main class="wrapper">
     <section class="container">
-      <!-- {{ printf "%#v" (ne .Site.Params.theme.fbopengraph false) }} -->
       {{ block "main" . }}
         <!-- The part of the page that begins to differ between templates -->
       {{ end }}
     </section>
   </main>
   <footer> {{ partial "footer.html" . }} </footer>
-  {{ partialCached "javascript.html" .}}
+  {{ partial "javascript.html" .}}
+  
+  {{ block "javascript" . }}
+    <!-- The part of the page that begins to differ between templates -->
+  {{ end }}
 </body>
 </html>

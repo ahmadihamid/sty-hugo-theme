@@ -199,7 +199,7 @@ body > header {
         &:after {
             border    : 4px solid transparent;
             content   : "";
-            margin-top: -3px;
+            margin-top: -1px;
             position  : absolute;
             right     : 16px;
             top       : 50%;
@@ -221,9 +221,9 @@ body > header {
     border        : .1rem solid $color-primary;
     display       : block;
     font-size     : 1.4rem;
-    height        : 3.0rem;
+    height        : 3.4rem;
     letter-spacing: .1rem;
-    line-height   : 2.0rem;
+    line-height   : 2.4rem;
     margin        : 0 0 0 auto;
     padding       : .4rem 1.3rem;
     text-align    : left;
@@ -330,6 +330,7 @@ body > header {
 
 body > main {
     margin-top: 8rem;
+    min-height: 480px;
 }
 
 .archive-title h5 {
@@ -581,4 +582,44 @@ body > main {
 body > footer {
     font-size : 1.4rem;
     text-align: center;
+}
+
+/* -----------------------------------------------------------------------------
+ *  Form
+ * -----------------------------------------------------------------------------
+ */
+ input[type='email'],
+ input[type='number'],
+ input[type='password'],
+ input[type='search'],
+ input[type='tel'],
+ input[type='text'],
+ input[type='url'],
+ textarea,
+ select {
+ 	appearance: none; // Removes awkward default styles on some inputs for iOS
+ 	background-color: transparent;
+ 	border: .1rem solid $color-quaternary;
+ 	border-radius: .4rem;
+ 	box-shadow: none;
+ 	box-sizing: inherit; // Forced to replace inherit values of the normalize.css
+    // font-family: $base-font-family;
+    // font-weight: $base-font-weight;
+ 	height: 3.8rem;
+    letter-spacing: inherit;
+ 	padding: .6rem 1.0rem; // The .6rem vertically centers text on FF, ignored by Webkit
+ 	width: 100%;
+
+ 	&:focus {
+ 		border-color: $color-primary;
+ 		outline: 0;
+ 	}
+ }
+
+.search {
+    input {
+        padding: .4rem 1.3rem;
+        text-align: center;
+        width: 100%;
+    }
 }

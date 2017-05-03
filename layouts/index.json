@@ -1,0 +1,12 @@
+[
+{{ range $i, $e := where .Data.Pages "Type" "!=" "page" }}
+  {{ if $i }}, {{ end }}
+  {
+      "objectID": "{{ $e.UniqueID }}",
+      "title": "{{ $e.Title }}",
+      "url": "{{ $e.Permalink }}",
+      "summary": "{{ replace (chomp $e.Summary | htmlEscape) "\n" "\\n" }}",
+      "categories": [{{ range $j, $c := .Params.categories }}{{ if $j }}, {{ end }}"{{ . }}"{{ end }}],
+      "tags": [{{ range $j, $c := .Params.tags }}{{ if $j }}, {{ end }}"{{ . }}"{{ end }}]
+  }{{ end }}
+]
