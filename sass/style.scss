@@ -23,7 +23,7 @@
 
 $color-initial    : #ffffff !default;
 $color-primary    : #1abc9c !default;
-$color-secondary  : #515151 !default;
+$color-secondary  : #414141 !default;
 $color-quaternary : #b1b1b1 !default;
 $color-quinary    : #e1e1e1 !default;
 
@@ -43,9 +43,9 @@ $container-width: 72rem;
  * -----------------------------------------------------------------------------
  */
 
-@import 'font-roboto-300';
-@import 'font-roboto-400';
-@import 'font-robotomono-400';
+@import 'fonts/_font-roboto-300.scss';
+@import 'fonts/_font-roboto-400.scss';
+@import 'fonts/_font-robotomono-400.scss';
 @import 'syntaxhighlight';
 @import '../node_modules/milligram-scss/dist/_Blockquote.scss';
 @import '../node_modules/milligram-scss/dist/_Image.scss';
