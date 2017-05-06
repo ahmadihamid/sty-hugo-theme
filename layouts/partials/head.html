@@ -5,10 +5,18 @@
 
 {{ if (isset .Params "description") }}
   {{ $desc := (.Params "description") }}
-  <meta name="description" content='{{ chomp $desc -}}{{ if .IsPage }}...{{ end }}'>
+  {{ if .IsPage }}
+    {{ $desc := (delimit (slice (chomp $desc) "...") "") }}
+  {{ end }}
+  {{ $desc := (chomp $desc) }}
+  <meta name="description" content="{{ $desc }}">
 {{ else }}
   {{ $desc := (substr (plainify (.Summary | default .Site.Params.description)) 0 200) }}
-  <meta name="description" content='{{ chomp $desc -}}{{ if .IsPage }}...{{ end }}'>
+  {{ if .IsPage }}
+    {{ $desc := (delimit (slice (chomp $desc) "...") "") }}
+  {{ end }}
+  {{ $desc := (chomp $desc) }}
+  <meta name="description" content="{{ $desc }}">
 {{ end }}
 
 {{ if ne .Site.Params.theme.fbopengraph false }}
