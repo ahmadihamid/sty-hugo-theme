@@ -11,8 +11,12 @@
   <footer class="post-footer">
     {{ if .Truncated }}
         <p><a class="read-more" href="{{ .Permalink }}" title="Lanjutkan membaca">
-          Baca selengkapnya &nbsp;
-          {{ partial "svg/chevr.html" }}
+          Baca selengkapnya
+          <i class="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+              <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-chevron-right'></use>
+            </svg>
+          </i>
         </a></p>
     {{ end }}
   </footer>

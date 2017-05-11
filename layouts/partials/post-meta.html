@@ -2,14 +2,22 @@
   <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "2 Jan 2006" }}</time>
 </span>
 <span class="post-categories">
-  {{ partial "svg/archive.html" }}
+  <i class="icons">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+      <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-archive'></use>
+    </svg>
+  </i>
 
   {{ range .Params.categories }}
     <a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
   {{ end }}
 </span>
 <span class="post-tags">
-  {{ partial "svg/tags.html" }}
+  <i class="icons">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+      <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-tags'></use>
+    </svg>
+  </i>
 
   {{ range .Params.tags }}
     <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>

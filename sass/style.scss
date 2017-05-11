@@ -90,6 +90,7 @@ body {
 
     svg {
         height: 1em;
+        width: auto;
     }
 }
 
@@ -456,6 +457,7 @@ body > main {
     font-size: 1.4rem;
 
     span {
+        display: inline-block;
         margin-right: 1rem;
         opacity: .7;
     }
@@ -545,14 +547,20 @@ body > main {
     .next, .prev {
         a {
             display: block;
-            font-size : 2.4rem;
             font-weight: $bold-font-weight;
             height: 3.5rem;
-            line-height : 3.2rem;
+
+            svg {
+                fill: $color-primary;
+            }
         }
 
         a:hover {
             color  : $color-initial;
+
+            svg {
+                fill: $color-initial;
+            }
         }
 
         &:hover {

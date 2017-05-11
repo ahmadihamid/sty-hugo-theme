@@ -16,7 +16,11 @@
   {{ end }}
   <li class='navigation-item close'>
     <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span>
-      {{ partial "svg/remsign.html" }}
+      <i class="icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+          <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-times-circle'></use>
+        </svg>
+      </i>
     </a>
   </li>
 </ul>
@@ -37,7 +41,11 @@
     {{ end }}
       <li class='navigation-item close'>
         <a class="navigation-link" href="#" data-menupop><span>Tutup Menu</span>
-          {{ partial "svg/remsign.html" }}
+          <i class="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+              <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-times-circle'></use>
+            </svg>
+          </i>
         </a>
       </li>
     </ul>

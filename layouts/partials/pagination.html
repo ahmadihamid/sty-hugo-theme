@@ -5,20 +5,46 @@
     <!-- Link for previous page -->
     {{ if $pag.HasPrev }}
       <li class="prev">
-        <a href="{{ $pag.Prev.URL }}" title="Menuju halaman sebelumnya"> &lsaquo; </a>
+        <a href="{{ $pag.Prev.URL }}" title="Menuju halaman sebelumnya">
+          <i class="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+              <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-chevron-left'></use>
+            </svg>
+          </i>
+        </a>
       </li>
     {{ else }}
-      <li class="prev active"> <a disabled> &lsaquo; </a> </li>
+      <li class="prev active">
+        <a disabled>
+          <i class="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+              <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-chevron-left'></use>
+            </svg>
+          </i>
+        </a>
+      </li>
     {{ end }}
       <li> <span>Halaman</span> <span>{{ $pag.PageNumber }} dari {{ $pag.TotalPages }}</span> </li>
     <!-- Next page button -->
     {{ if $pag.HasNext }}
       <li class="next">
-        <a href="{{ $pag.Next.URL }}" title="Menuju halaman berikutnya"> &rsaquo; </a>
+        <a href="{{ $pag.Next.URL }}" title="Menuju halaman berikutnya">
+          <i class="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+              <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-chevron-right'></use>
+            </svg>
+          </i>
+        </a>
       </li>
     {{ else }}
       <li class="next active">
-        <a disabled> &rsaquo; </a>
+        <a disabled>
+          <i class="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+              <use xlink:href='{{ "/img/symbol-defs.svg" | absURL }}#icon-chevron-right'></use>
+            </svg>
+          </i>
+        </a>
       </li>
     {{ end }}
   </ul>
