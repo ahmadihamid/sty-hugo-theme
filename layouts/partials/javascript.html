@@ -1,1 +1,3 @@
-<script type="text/javascript" src='{{ "js/main.js" | relURL }}'> </script>
+<script>
+function closp(e){for(i=0;i<$po.length;i++)$po[i].classList.remove("open")}function opnp(e){if(e.preventDefault(),"#"==this.getAttribute("href"))return closp(),void e.stopImmediatePropagation();document.querySelector(this.getAttribute("href")).classList.contains("open")?document.querySelector(this.getAttribute("href")).classList.remove("open"):(closp(),document.querySelector(this.getAttribute("href")).classList.add("open")),e.stopImmediatePropagation()}const $pol=document.querySelectorAll("[data-menupop]"),$po=document.querySelectorAll(".menu");var i;for(i=0;i<$pol.length;i++)$pol[i].addEventListener("click",opnp);document.addEventListener("click",closp);
+</script>
