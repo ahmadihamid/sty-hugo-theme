@@ -39,7 +39,7 @@
 <link rel="canonical"  href='{{ .URL | absURL }}'>
 {{ end}}
 <link rel="icon" type="image/png" sizes="24x24" href='{{ "img/favicon.png" | absURL }}'>
-<link rel="stylesheet" href='{{ "css/style.min.css" | relURL }}'>
+<link rel="stylesheet" href='{{ "css/style.min.css" | absURL }}'>
 
 {{ if .IsHome }}
   <title>{{ .Site.Title }}</title>
