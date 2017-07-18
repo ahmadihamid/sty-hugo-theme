@@ -105,6 +105,9 @@ pre {
 .gist .gist-data {
   max-height: 240px; }
 
+.highlight pre, pre {
+  position: relative; }
+
 .highlight {
   /* Comment */
   /* Error */

@@ -34,6 +34,10 @@ pre {
     max-height: 240px;
 }
 
+.highlight pre, pre {
+    position: relative;
+}
+
 .highlight {
     pre { background-color: transparent; }
     .hll { background-color: #49483e }
